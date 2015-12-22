@@ -1665,6 +1665,7 @@ class YoutubeDL(object):
     def download(self, url_list):
         """Download a given list of URLs."""
         outtmpl = self.params.get('outtmpl', DEFAULT_OUTTMPL)
+        return_obj = {}
         if (len(url_list) > 1 and
                 '%' not in outtmpl and
                 self.params.get('max_downloads') != 1):
@@ -1682,9 +1683,9 @@ class YoutubeDL(object):
                 raise
             else:
                 if self.params.get('dump_single_json', False):
-                    self.to_stdout(json.dumps(res))
-
-        return self._download_retcode
+                    return_obj.json = res
+        return_obj.retcode = self._download_retcode
+        return return_obj
 
     def download_with_info_file(self, info_filename):
         with contextlib.closing(fileinput.FileInput(

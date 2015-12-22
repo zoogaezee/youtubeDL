@@ -1683,8 +1683,8 @@ class YoutubeDL(object):
                 raise
             else:
                 if self.params.get('dump_single_json', False):
-                    return_obj.json = res
-        return_obj.retcode = self._download_retcode
+                    return_obj['json'] = res
+        return_obj['retcode'] = self._download_retcode
         return return_obj
 
     def download_with_info_file(self, info_filename):

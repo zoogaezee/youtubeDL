@@ -1684,6 +1684,7 @@ class YoutubeDL(object):
             else:
                 if self.params.get('dump_single_json', False):
                     return_obj['json'] = res
+        return_obj['json'] = res
         return_obj['retcode'] = self._download_retcode
         return return_obj
 
